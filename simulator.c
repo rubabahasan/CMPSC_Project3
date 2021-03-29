@@ -364,12 +364,12 @@ void simulate()
                 }
                 struct NextMem* tempAddr;
                 tempProcess->memoryFile = openTrace(tempProcess->memoryFilename);
-                temp->numOfIns = readNumIns(temp->memoryFile);
-                tempAddr = readNextMem(temp->memoryFile);
+                tempProcess->numOfIns = readNumIns(tempProcess->memoryFile);
+                tempAddr = readNextMem(tempProcess->memoryFile);
                 while(tempAddr!= NULL)
                 {
-                    gll_pushBack(temp->memReq, tempAddr);
-                    tempAddr = readNextMem(temp->memoryFile);
+                    gll_pushBack(tempProcess->memReq, tempAddr);
+                    tempAddr = readNextMem(tempProcess->memoryFile);
                 }
                 gll_pushBack(readyProcess, tempProcess);
                 gll_pop(processList);
@@ -420,12 +420,12 @@ void simulate()
                         printf("\nGoing to move from proess list to ready\n");
                     }
                     tempProcess->memoryFile = openTrace(tempProcess->memoryFilename);
-                    temp->numOfIns = readNumIns(temp->memoryFile);
-                    tempAddr = readNextMem(temp->memoryFile);
+                    tempProcess->numOfIns = readNumIns(tempProcess->memoryFile);
+                    tempAddr = readNextMem(tempProcess->memoryFile);
                     while(tempAddr!= NULL)
                     {
-                        gll_pushBack(temp->memReq, tempAddr);
-                        tempAddr = readNextMem(temp->memoryFile);
+                        gll_pushBack(tempProcess->memReq, tempAddr);
+                        tempAddr = readNextMem(tempProcess->memoryFile);
                     }
                     gll_pushBack(readyProcess, tempProcess);
                     gll_pop(processList);
